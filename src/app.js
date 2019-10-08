@@ -4,6 +4,8 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
+const folderRouter = require('./folder/folder-router')
+const noteRouter = require('./note/note-router')
 
 const app = express()
 
@@ -29,5 +31,8 @@ app.use(function errorHandler(error, req, res, next) {
        }
        res.status(500).json(response)
      })
+
+app.use('/api/folders', folderRouter)
+app.use('/api/notes', noteRouter)
 
 module.exports = app
