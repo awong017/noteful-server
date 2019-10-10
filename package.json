@@ -9,7 +9,7 @@
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:production": "SET DATABASE_URL=$(heroku config:get DATABASE_URL -a cryptic-waters-95362) && postgrator --config postgrator-production-config.js",
     "start": "node src/noteful.js",
-    "predeploy": "npm audit",
+    "predeploy": "npm audit && npm run migrate:production",
     "deploy": "git push heroku master"
   },
   "keywords": [],
